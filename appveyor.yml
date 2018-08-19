@@ -8,10 +8,11 @@ environment:
 
 install:
  - set PATH=%PYTHON%\Scripts;%PYTHON%;%PATH%
+ - pip freeze
  - git clone --recursive https://code.qt.io/pyside/pyside-setup
  - cd pyside-setup && git checkout 5.11
  - call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
 build_script:
- - python setup.py build --qmake=C:\Qt\5.11.1\msvc2015_64\bin\qmake.exe --openssl=C:\Dev\qtdev\OpenSSL-Win64\bin  --build-tests --ignore-git --jobs=8
+ - python setup.py build --qmake=C:\Qt\5.11.1\msvc2015_64\bin\qmake.exe --build-tests --ignore-git --jobs=1
