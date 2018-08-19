@@ -1,0 +1,15 @@
+platform: x64
+configuration: Release
+image: Visual Studio 2015
+
+environment:
+  matrix:
+    - PYTHON: "C:\\Python27-x64"
+
+install:
+ - set PATH=%PYTHON%\Scripts;%PYTHON%;%PATH%
+ - git clone --recursive https://code.qt.io/pyside/pyside-setup
+ - cd pyside-setup && git checkout 5.11
+
+build_script:
+ - python setup.py build --qmake=C:\Qt\5.11.1\msvc2015_64\bin\qmake.exe --openssl=C:\Dev\qtdev\OpenSSL-Win64\bin  --build-tests --ignore-git --jobs=8
